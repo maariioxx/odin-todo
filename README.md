@@ -1,1 +1,1 @@
-# odin-todo
+I'm going to create a ToDo List page using HTML, CSS, JS & Webpack
