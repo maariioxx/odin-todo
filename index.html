@@ -7,6 +7,57 @@
     <script src="./main.js" defer></script>
 </head>
 <body>
-    eeeee
+    <main>
+        <button class="newToDo-btn">NEW TO-DO</button>
+        <form action="">
+            <dialog class="toDoDialog">
+                <div>
+                    <label for="toDoTitle">Title</label>
+                    <input type="text" name="toDoTitle" id="toDoTitle">
+                </div>
+                <div>
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="description">
+                </div>
+                <div>
+                    <label for="dueDate">Due Date</label>
+                    <input type="date" name="dueDate" id="dueDate">
+                </div>
+                <div>
+                    <label for="priority">Priority</label>
+                    <input type="text" name="priority" id="priority">
+                </div>
+                <div>
+                    <label for="project-select">Choose a project</label>
+                    <select name="project" id="project-select">
+                        <option value="default">Default</option>
+                    </select>
+                </div>
+                <div class="buttons">
+                    <button class="todo-send-btn">SEND</button>
+                </div>
+            </dialog>
+        </form>
+        <button class="newProject-btn">NEW PROJECT</button>
+        <form action="">
+            <dialog class="projectDialog">
+                <div>
+                    <label for="projectTitle">Title of the new project:</label>
+                    <input type="text" name="projectTitle" id="projectTitle">
+                </div>
+                <div class="buttons">
+                    <button class="project-send-btn">SEND</button>
+                </div>
+            </dialog>
+            
+        </form>
+        <ul class="todo-list"></ul>
+        <dialog class="toDoInfoDialog">
+            <div class="dialogTitle"></div>
+            <div class="dialogDescription"></div>
+            <div class="dialogDueDate"></div>
+            <div class="dialogPriority"></div>
+        </dialog>
+    </main>
 </body>
 </html>
