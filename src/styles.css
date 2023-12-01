@@ -92,5 +92,44 @@ main{
     border-top-left-radius: 30px;
     background-color: #191919;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+form{
+    width: 90%;
+    margin-top: 100px;
+}
+
+form > fieldset{
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+legend{
+    font-size: 1.5rem;
+}
+
+label{
+    font-size: 1.6rem;
+}
+
+#toDoTitle, #dueDate{
+    background-color: #222222;
+    outline: none;
+    border: 1px solid black;
+    height: 25px;
+    border-radius: 5px;
+    color: white;
+}
+
+div > fieldset{
+    display: flex;
+    border: none;
+}
+
+input[type ="radio"]{
+    background-color: green;
 }

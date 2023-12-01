@@ -5,7 +5,6 @@ import * as dateFns from "date-fns";
 const nav = document.querySelector("nav")
 const usernameInput = document.querySelector("#username");
 const changeUsernameBtn = document.querySelector(".change-username-btn")
-const newTodoBtn = document.querySelector(".newToDo-btn");
 const newProjectBtn = document.querySelector(".newProject-btn")
 const toDoDialog = document.querySelector(".toDoDialog");
 const projectDialog = document.querySelector(".projectDialog");
@@ -114,25 +113,16 @@ nav.addEventListener("click", (e) => {
         confirmCancelUsernameChange(e.target);
 }});
 
-newTodoBtn.addEventListener("click", () => {
-    toDoDialog.showModal();
-});
-
-newProjectBtn.addEventListener("click", () => {
-    projectDialog.showModal()
-})
 
 todoSendBtn.addEventListener("click", (e) => {
     e.preventDefault();
     addToDo();
     displayToDos();
-    toDoDialog.close();
 });
 
 projectSendBtn.addEventListener("click", (e) => {
     e.preventDefault();
     addProject();
-    projectDialog.close();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
