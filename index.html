@@ -20,9 +20,9 @@
         </div>
     </nav>
     <main>
-        <button class="newToDo-btn">NEW TO-DO</button>
         <form action="">
-            <dialog class="toDoDialog">
+            <fieldset>
+                <legend>Create a new To-Do</legend>
                 <div>
                     <label for="toDoTitle">Title</label>
                     <input type="text" name="toDoTitle" id="toDoTitle">
@@ -32,8 +32,11 @@
                     <input type="date" name="dueDate" id="dueDate">
                 </div>
                 <div>
-                    <label for="priority">Priority</label>
-                    <input type="text" name="priority" id="priority">
+                    <fieldset>
+                        <div><input type="radio"></div>
+                        <div><input type="radio"></div>
+                        <div><input type="radio"></div>
+                    </fieldset>
                 </div>
                 <div>
                     <label for="project-select">Choose a project</label>
@@ -42,11 +45,11 @@
                     </select>
                 </div>
                 <div class="buttons">
-                    <button class="todo-send-btn">SEND</button>
+                    <button class="todo-send-btn">Create To-Do</button>
                 </div>
-            </dialog>
+            </fieldset>
         </form>
-        <button class="newProject-btn">NEW PROJECT</button>
+        
         <form action="">
             <dialog class="projectDialog">
                 <div>
