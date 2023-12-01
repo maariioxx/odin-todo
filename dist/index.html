@@ -5,8 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do</title>
     <script src="./main.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+    <h1 class="title">To-Done <span class="material-icons title">check</span></h1>
+    <nav>
+        <div class="username">
+            <div class="welcome">Welcome, <input type="text" value="user" id="username" disabled></div>
+            <p class="change-username-btn">Change username</p>
+        </div>
+        <h3>Home<span class="material-icons nav">home</span></h3>
+        <div class="projects-nav">
+            <h3>Projects<span class="material-icons nav">folder</span></h3>
+        </div>
+    </nav>
     <main>
         <button class="newToDo-btn">NEW TO-DO</button>
         <form action="">
@@ -14,10 +26,6 @@
                 <div>
                     <label for="toDoTitle">Title</label>
                     <input type="text" name="toDoTitle" id="toDoTitle">
-                </div>
-                <div>
-                    <label for="description">Description</label>
-                    <input type="text" name="description" id="description">
                 </div>
                 <div>
                     <label for="dueDate">Due Date</label>
@@ -54,7 +62,6 @@
         <ul class="todo-list"></ul>
         <dialog class="toDoInfoDialog">
             <div class="dialogTitle"></div>
-            <div class="dialogDescription"></div>
             <div class="dialogDueDate"></div>
             <div class="dialogPriority"></div>
         </dialog>
