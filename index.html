@@ -14,60 +14,59 @@
             <div class="welcome">Welcome, <input type="text" value="user" id="username" disabled></div>
             <p class="change-username-btn">Change username</p>
         </div>
-        <h3>Home<span class="material-icons nav">home</span></h3>
+        <h3 class="home-nav">Home<span class="material-icons nav">home</span></h3>
         <div class="projects-nav">
             <h3>Projects<span class="material-icons nav">folder</span></h3>
+            <p class="new-project">+New</p>
         </div>
     </nav>
     <main>
-        <form action="">
-            <fieldset>
-                <legend>Create a new To-Do</legend>
-                <div>
-                    <label for="toDoTitle">Title</label>
-                    <input type="text" name="toDoTitle" id="toDoTitle">
-                </div>
-                <div>
-                    <label for="dueDate">Due Date</label>
-                    <input type="date" name="dueDate" id="dueDate">
-                </div>
-                <div>
-                    <fieldset>
-                        <div><input type="radio"></div>
-                        <div><input type="radio"></div>
-                        <div><input type="radio"></div>
-                    </fieldset>
-                </div>
-                <div>
-                    <label for="project-select">Choose a project</label>
-                    <select name="project" id="project-select">
-                        <option value="default">Default</option>
-                    </select>
-                </div>
-                <div class="buttons">
-                    <button class="todo-send-btn">Create To-Do</button>
-                </div>
-            </fieldset>
-        </form>
+        <div class="home-page" hidden>
+            <form action="">
+                <fieldset>
+                    <legend>Create a new To-Do</legend>
+                    <div>
+                        <label for="toDoTitle">Title: </label>
+                        <input type="text" name="toDoTitle" id="toDoTitle">
+                    </div>
+                    <div>
+                        <label for="dueDate">Due Date: </label>
+                        <input type="date" name="dueDate" id="dueDate">
+                    </div>
+                    <div>
+                        <fieldset>
+                            <label>Priority:</label>
+                            <div><input type="radio" name="priority" value="low" id="low-priority" class="material-icons" checked></div>
+                            <div><input type="radio" name="priority" value="medium" id="medium-priority"></div>
+                            <div><input type="radio" name="priority" value="high" id="high-priority"></div>
+                        </fieldset>
+                    </div>
+                    <div>
+                        <label for="project-select">Choose a project: </label>
+                        <select name="project" id="project-select">
+                            <option value="default">Default</option>
+                        </select>
+                    </div>
+                    <div class="buttons">
+                        <button class="todo-send-btn">Create To-Do</button>
+                    </div>
+                </fieldset>
+            </form>
         
-        <form action="">
-            <dialog class="projectDialog">
-                <div>
-                    <label for="projectTitle">Title of the new project:</label>
-                    <input type="text" name="projectTitle" id="projectTitle">
-                </div>
-                <div class="buttons">
-                    <button class="project-send-btn">SEND</button>
-                </div>
-            </dialog>
-            
-        </form>
-        <ul class="todo-list"></ul>
-        <dialog class="toDoInfoDialog">
-            <div class="dialogTitle"></div>
-            <div class="dialogDueDate"></div>
-            <div class="dialogPriority"></div>
-        </dialog>
+            <form action="">
+                <dialog class="projectDialog">
+                    <div>
+                        <label for="projectTitle">Title of the new project:</label>
+                        <input type="text" name="projectTitle" id="projectTitle">
+                    </div>
+                    <div class="buttons">
+                        <button class="project-send-btn">SEND</button>
+                    </div>
+                </dialog>
+        
+            </form>
+            <ul class="todo-list"></ul>
+        </div>
     </main>
 </body>
 </html>
