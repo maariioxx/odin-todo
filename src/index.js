@@ -238,10 +238,10 @@ function deleteToDo(e){
     const li = document.querySelectorAll("li");
     const index = toDos.myToDos[(e.target.parentNode.id).split("")[2]];
     toDos.myToDos.splice(index, 1);
-    e.target.parentElement.remove();
+    e.target.parentElement.parentElement.remove();
     let currIndex = 0;
     li.forEach(ul => {
-        if(ul.id.split("")[2] != e.target.parentNode.id.split("")[2]){
+        if(ul.id.split("")[2] != e.target.parentElement.parentElement.id.split("")[2]){
             currIndex++;
             let currID = `TD${toDos.myToDos.length - (toDos.myToDos.length - currIndex + 1)}`
             ul.setAttribute("id", currID)
@@ -331,7 +331,3 @@ document.addEventListener("click", (e) => {
         
     }
 })
-
-
-
-
