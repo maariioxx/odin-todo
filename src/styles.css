@@ -132,13 +132,13 @@ main{
     align-items: center;
 }
 
-form, .project-page-title{
+form, .project-page-title, .manage-project-page-title{
     height: 110px;
     width: 90%;
     margin: 100px 0;
 }
 
-.project-page-title{
+.project-page-title, .manage-project-page-title{
     margin-left: 150px;
     font-size: 4rem;
     text-align: left;
@@ -161,7 +161,7 @@ label{
     font-size: 1.6rem;
 }
 
-#toDoTitle, #dueDate, #editToDoTitle, #editToDoDueDate{
+#toDoTitle, #dueDate, #editToDoTitle, #editToDoDueDate, #editProjectTitle{
     background-color: #222222;
     outline: none;
     border: 1px solid black;
@@ -263,11 +263,12 @@ li > p{
     font-size: 1.5rem;
 }
 
-div.todo-buttons-div{
+div.todo-buttons-div, div.project-buttons-div{
     display: flex;
 }
 
-div.edit-todo, div.delete-todo, div.confirm-change-todo, div.cancel-change-todo{
+div.edit-todo, div.delete-todo, div.edit-project, div.delete-project, 
+div.confirm-change-todo, div.cancel-change-todo, div.confirm-change-project, div.cancel-change-project{
     width: 30px;
     cursor: pointer;
     outline: none;
@@ -284,6 +285,7 @@ div.edit-div {
     gap: 30px;
 }
 
-div.edit-todo:hover, div.delete-todo:hover, div.confirm-change-todo:hover, div.cancel-change-todo:hover{
+div.edit-todo:hover, div.delete-todo:hover, div.edit-project:hover, div.delete-project:hover, 
+div.confirm-change-todo:hover, div.cancel-change-todo:hover, div.confirm-change-project:hover, div.cancel-change-project:hover{
     border: 1px solid white
 }

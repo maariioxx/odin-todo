@@ -16,6 +16,9 @@ export function changeAddToDoToProjectTitle(project){
 
 export function deleteNonProjectToDos(project){
     let toDoList = document.querySelectorAll("li");
+    if(toDoList.hasAttribute("style")){
+        toDoList.removeAttribute("style")
+    }
     for(let i = 0; i < toDoList.length; i++){
         if(toDoList[i].querySelector(".toDoProject").textContent != project){
             toDoList[i].style.display = "none";
