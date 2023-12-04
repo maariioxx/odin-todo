@@ -17,7 +17,8 @@ body{
 
 h1.title {
     grid-area: 1 / 1 / 2 / 3;
-    position: relative
+    position: relative;
+    margin-left: 225px
 }
 
 .title.material-icons {
@@ -131,9 +132,16 @@ main{
     align-items: center;
 }
 
-form{
+form, .project-page-title{
+    height: 110px;
     width: 90%;
-    margin-top: 100px;
+    margin: 100px 0;
+}
+
+.project-page-title{
+    margin-left: 150px;
+    font-size: 4rem;
+    text-align: left;
 }
 
 form > fieldset{
@@ -184,6 +192,10 @@ input[type= "radio"]:checked{
     border: 2px solid white
 }
 
+.change-priority{
+    cursor: pointer;
+}
+
 #low-priority{
     background-color: gray;
 }
@@ -194,6 +206,33 @@ input[type= "radio"]:checked{
 
 #high-priority{
     background-color: red;
+}
+
+select{
+    cursor: pointer;
+    background-color: inherit;
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+select option{
+    background-color: #191919;
+    outline: none;
+}
+
+.todo-send-btn{
+    cursor: pointer;
+    background-color: #541482;
+    outline: none;
+    border: 1px solid gray;
+    color:white;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.todo-send-btn:hover{
+    border: 1px solid white;
 }
 
 ul{

@@ -2,6 +2,7 @@ import "./styles.css";
 import * as toDos from "./todos.js";
 import * as myProjects from "./projects.js"
 import * as dateFns from "date-fns";
+import * as projectPage from "./projecttodos.js"
 
 const nav = document.querySelector("nav")
 const usernameInput = document.querySelector("#username");
@@ -28,6 +29,7 @@ function displayToDos(){
             let dueDate = document.createElement("p");
             dueDate.classList.add("toDoDueDate")
             dueDate.textContent = `${dateFns.format(new Date(todo.dueDate), 'dd-MM-yy')}`;
+            console.log(toDos.myToDos)
             let priority = document.createElement("div");
             priority.classList.add("priority");
             priority.setAttribute("id", `${todo.priority}-priority`);
@@ -146,11 +148,8 @@ function editToDo(e){
     const confirmButton = event.target.closest(".confirm-change-todo")
     const cancelButton = event.target.closest(".cancel-change-todo");
 
-    
-
     const toDoTitle = parentToDo.querySelector(".toDoTitle");
     const toDoDueDate = parentToDo.querySelector(".toDoDueDate");
-    
     
     if(confirmButton){
         const toDoIndex = parentToDo.id.split("")[2];
@@ -158,12 +157,13 @@ function editToDo(e){
         toDoTitle.textContent = toDos.myToDos[toDoIndex].title;
         toDoTitle.hidden = false;
         toDos.myToDos[toDoIndex].dueDate = parentToDo.querySelector("#editToDoDueDate").value;
-        toDoDueDate.textContent = toDos.myToDos[toDoIndex].dueDate;
+        toDoDueDate.textContent = dateFns.format(new Date(toDos.myToDos[toDoIndex].dueDate), 'dd-MM-yy');
         toDoDueDate.hidden = false;
         toDos.myToDos[toDoIndex].priority = parentToDo.querySelector(".priority").id.split("-")[0];
         finishChangesButtons(parentToDo);
         
     }
+
     if(cancelButton){
         toDoTitle.hidden = false;
         toDoDueDate.hidden = false;
@@ -267,14 +267,31 @@ function changeNewProjectButtonToInput(){
 
 function createNewProject(){
     let input = document.querySelector(".new-project-input");
-    myProjects.pushProject(input.value);
-    console.log(myProjects.myProjects)
+    if(input.value.length > 0){
+        myProjects.pushProject(input.value);
+    }
 }
 
 function toggleNewProject(){
     let input = document.querySelector(".new-project-div");
     input.remove();
     newProjectBtn.hidden = false;
+}
+
+function turnHomePage(){
+    let homePage = document.querySelector(".home-page")
+    let addToDoForm = document.querySelector("form");
+    let toDoList = document.querySelectorAll("li");
+    if(homePage.querySelector(".project-page-title")){
+        homePage.querySelector(".project-page-title").remove();
+    };
+    addToDoForm.hidden = false;
+    displayToDos();
+    for(let i = 0; i < toDoList.length; i++){
+        if(toDoList[i].hasAttribute("style")){
+            toDoList[i].removeAttribute("style")
+        }
+    }
 }
 
 changeUsernameBtn.addEventListener("click", () => {
@@ -304,11 +321,6 @@ todoSendBtn.addEventListener("click", (e) => {
     displayToDos();
 });
 
-projectSendBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    addProject();
-});
-
 document.addEventListener("DOMContentLoaded", (e) => {
     displayToDos();
     displayProjects();
@@ -318,6 +330,9 @@ document.addEventListener("click", (e) => {
     const deleteBtn = e.target.closest(".delete-todo");
     const confirmNewProjectBtn = e.target.closest(".confirm-new-project");
     const editBtn = e.target.closest(".edit-todo");
+    const homePageBtn = e.target.closest(".home-nav")
+    const projectTitleBtn = e.target.closest(".project-title");
+
     if(deleteBtn){
         deleteToDo(e);
     }
@@ -328,6 +343,14 @@ document.addEventListener("click", (e) => {
     }
     if(editBtn){
         editToDo(e);
-        
+    }
+
+    if(homePageBtn){
+        turnHomePage();
+    }
+
+    if(projectTitleBtn){
+        projectPage.changeAddToDoToProjectTitle(e.target.textContent);
+        projectPage.deleteNonProjectToDos(e.target.textContent)
     }
 })
