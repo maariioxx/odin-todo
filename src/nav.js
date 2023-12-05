@@ -36,7 +36,6 @@ function addProjectToSelect(projectTitle){
 }
 
 export function displayUsername(){
-    console.log(username)
     usernameInput.value = `${Object.values(username[0])}`
 }
 export function changeUsername(){
