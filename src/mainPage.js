@@ -141,10 +141,10 @@ export function editToDo(e){
     if(confirmButton){
         const toDoIndex = parentToDo.id.split("")[2];
         todos[toDoIndex].title = parentToDo.querySelector("#editToDoTitle").value;
-        toDoTitle.textContent = toDos.myToDos[toDoIndex].title;
+        toDoTitle.textContent = todos[toDoIndex].title;
         toDoTitle.hidden = false;
         todos[toDoIndex].dueDate = parentToDo.querySelector("#editToDoDueDate").value;
-        toDoDueDate.textContent = dateFns.format(new Date(toDos.myToDos[toDoIndex].dueDate), 'dd-MM-yy');
+        toDoDueDate.textContent = dateFns.format(new Date(todos[toDoIndex].dueDate), 'dd-MM-yy');
         toDoDueDate.hidden = false;
         todos[toDoIndex].priority = parentToDo.querySelector(".priority").id.split("-")[0];
         finishChangesButtons(parentToDo);
