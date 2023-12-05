@@ -1,4 +1,6 @@
-import * as myProjects from "./projects.js"
+import * as myProjects from "./projects.js";
+import * as nav from "./nav.js";
+import { projects } from "./index.js";
 
 
 let homePage = document.querySelector(".home-page")
@@ -23,8 +25,8 @@ export function createProjectsDiv(){
 
 export function displayProjects(){
     let projectsList = document.querySelector(".project-list");
-    myProjects.myProjects.map(project => {
-        let projectId = myProjects.myProjects.indexOf(project)
+    projects.map(project => {
+        let projectId = projects.indexOf(project)
         if(!(projectsList.querySelector(`P${projectId}`))){
             let projectLi = document.createElement("li");
             projectLi.setAttribute("id", `P${projectId}`);
@@ -105,6 +107,21 @@ function finishChangesButtons(parentToDo){
     projectTitleInput.remove();
 }
 
+export function deleteProject(e){
+    const li = document.querySelectorAll("li");
+    projects.splice((e.target.parentElement.parentElement.id).split("")[1], 1);
+    e.target.parentElement.parentElement.remove();
+    let currIndex = 0;
+    li.forEach(ul => {
+        if(ul.id.split("")[1] != e.target.parentElement.parentElement.id.split("")[1] && !(ul.hasAttribute("style"))){
+            currIndex++;
+            let currID = `P${projects.length - (projects.length - currIndex + 1)}`
+            ul.setAttribute("id", currID)
+        }
+    })
+    nav.deleteProject(e);
+}
+
 export function editProject(e){
     let parentToDo = e.target.parentElement.parentElement
     changeProjectTitleToInput(e);
@@ -118,8 +135,8 @@ export function editProject(e){
         if(confirmButton){
             
             let projectIndex = e.target.parentElement.parentElement.id.split("")[1]
-            myProjects.myProjects[projectIndex].title = e.target.parentElement.parentElement.querySelector("#editProjectTitle").value;
-            projectTitle.textContent = myProjects.myProjects[projectIndex].title;
+            projects[projectIndex].title = e.target.parentElement.parentElement.querySelector("#editProjectTitle").value;
+            projectTitle.textContent = projects[projectIndex].title;
             projectTitle.hidden = false;
             finishChangesButtons(parentToDo)
         }

@@ -1,12 +1,13 @@
 import * as toDos from "./todos.js"
 import * as dateFns from "date-fns";
+import * as index from "./index.js";
+import {todos} from "./index.js";
 
 const toDoList = document.querySelector(".todo-list");
 
-
 export function displayToDos(){
-    toDos.myToDos.map(todo => {
-        let toDoId = toDos.myToDos.indexOf(todo)
+    todos.map(todo => {
+        let toDoId = todos.indexOf(todo)
         if(!(toDoList.querySelector(`#TD${toDoId}`))){
             let todoLi = document.createElement("li");
             todoLi.setAttribute("id", `TD${toDoId}`);
@@ -139,15 +140,15 @@ export function editToDo(e){
     
     if(confirmButton){
         const toDoIndex = parentToDo.id.split("")[2];
-        toDos.myToDos[toDoIndex].title = parentToDo.querySelector("#editToDoTitle").value;
+        todos[toDoIndex].title = parentToDo.querySelector("#editToDoTitle").value;
         toDoTitle.textContent = toDos.myToDos[toDoIndex].title;
         toDoTitle.hidden = false;
-        toDos.myToDos[toDoIndex].dueDate = parentToDo.querySelector("#editToDoDueDate").value;
+        todos[toDoIndex].dueDate = parentToDo.querySelector("#editToDoDueDate").value;
         toDoDueDate.textContent = dateFns.format(new Date(toDos.myToDos[toDoIndex].dueDate), 'dd-MM-yy');
         toDoDueDate.hidden = false;
-        toDos.myToDos[toDoIndex].priority = parentToDo.querySelector(".priority").id.split("-")[0];
+        todos[toDoIndex].priority = parentToDo.querySelector(".priority").id.split("-")[0];
         finishChangesButtons(parentToDo);
-        
+        index.updateToDosLocalStorage();
     }
 
     if(cancelButton){
@@ -165,18 +166,20 @@ export function addToDo(){
     let projectInput = document.querySelector("#project-select").value;
     let toDoId = toDos.myToDos.length;
     toDos.pushToDo(toDoTitleInput, dateInput, priorityInput, projectInput, toDoId);
+    todos.push({title : toDoTitleInput, dueDate: dateInput, priority : priorityInput, project : projectInput, id : toDoId});
 };
 
 export function deleteToDo(e){
+    console.log(document.querySelectorAll("li"))
     const li = document.querySelectorAll("li");
-    const index = toDos.myToDos[(e.target.parentNode.id).split("")[2]];
-    toDos.myToDos.splice(index, 1);
+    const index = todos[(e.target.parentNode.id).split("")[2]];
+    todos.splice(index, 1);
     e.target.parentElement.parentElement.remove();
     let currIndex = 0;
     li.forEach(ul => {
         if(ul.id.split("")[2] != e.target.parentElement.parentElement.id.split("")[2]){
             currIndex++;
-            let currID = `TD${toDos.myToDos.length - (toDos.myToDos.length - currIndex + 1)}`
+            let currID = `TD${todos.length - (todos.length - currIndex + 1)}`
             ul.setAttribute("id", currID)
         }
     })

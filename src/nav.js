@@ -1,5 +1,6 @@
 
-import * as myProjects from "./projects.js"
+import * as myProjects from "./projects.js";
+import { projects, username } from "./index.js";
 
 const projectSelect = document.querySelector("#project-select");
 const projectsNav = document.querySelector(".projects-nav");
@@ -7,8 +8,8 @@ const usernameInput = document.querySelector("#username");
 const newProjectBtn = document.querySelector(".new-project");
 
 export function displayProjects(){
-    myProjects.myProjects.map(project => {
-        let projectId = `P${myProjects.myProjects.indexOf(project)}`;
+    projects.map(project => {
+        let projectId = `P${projects.indexOf(project)}`;
         if(!(projectsNav.querySelector(`#P${projectId}`))){
             let projectTitle = document.createElement("h5");
             projectTitle.textContent = project.title;
@@ -16,15 +17,28 @@ export function displayProjects(){
             projectTitle.setAttribute("id", `P${projectId}`);
             addProjectToSelect(project.title);
             projectsNav.append(projectTitle);
-            console.log(myProjects.myProjects)
         }
     })
+}
+
+export function deleteProject(e){
+    let projects = document.querySelectorAll("h5");
+    let index = (e.target.parentElement.parentElement.id).split("")[1]
+    for(let i = 0; i < projects.length; i++){
+        if((projects[i].id).split("")[2] === index){
+            projects[i].remove();
+        }
+    }
 }
 
 function addProjectToSelect(projectTitle){
         projectSelect.innerHTML += `<option value=${projectTitle}>${projectTitle}</option>`
 }
 
+export function displayUsername(){
+    console.log(username)
+    usernameInput.value = `${Object.values(username[0])}`
+}
 export function changeUsername(){
     usernameInput.removeAttribute("disabled")
 }
@@ -49,6 +63,10 @@ export function createConfirmCancelUsernameBtns(){
 
 export function confirmCancelUsernameChange(eTarget){
     usernameInput.disabled = true;
+    console.log(usernameInput.value);
+    username.splice(0, 1)
+    username.push({user : usernameInput.value});
+    
     eTarget.parentElement.remove()
 }
 
@@ -72,6 +90,7 @@ export function createNewProject(){
     let input = document.querySelector(".new-project-input");
     if(input.value.length > 0){
         myProjects.pushProject(input.value);
+        projects.push({title : input.value});
     }
 }
 
